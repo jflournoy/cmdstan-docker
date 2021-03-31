@@ -1,4 +1,4 @@
-FROM rocker/verse:3.5.1
+FROM rocker/verse:4.0.4
 
 WORKDIR /cmdstan
 
@@ -9,6 +9,8 @@ RUN wget --progress=dot:mega https://github.com/stan-dev/cmdstan/releases/downlo
 RUN tar -zxpf cmdstan-2.26.1.tar.gz
 RUN ln -s cmdstan-2.26.1 cmdstan
 RUN cd cmdstan; make build
+
+RUN chmod a+w -R cmdstan
 
 RUN cd cmdstan; echo "CmdStan home directory is" $PWD
 
